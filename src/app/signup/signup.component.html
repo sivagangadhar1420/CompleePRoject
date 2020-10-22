@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Hotel Code</label>
+        <input type="text" class="form-control" [(ngModel)]="a" formControlName="hotelcode" #hotelcode readonly/>
+      </div>
+      <div *ngIf="angForm.controls['hotelcode'].invalid && (angForm.controls['hotelcode'].dirty || angForm.controls['hotelcode'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['hotelcode'].errors.required">
+          Hotel Code is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Hotel Name </label>
+        <input type="text" class="form-control" formControlName="hotelname" #hotelname />
+      </div>
+      <div *ngIf="angForm.controls['hotelname'].invalid && (angForm.controls['hotelname'].dirty || angForm.controls['hotelname'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['hotelname'].errors.required">
+          Hotel Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Hotel Location </label>
+        <input type="text" class="form-control" formControlName="hotellocation" #hotellocation />
+      </div>
+      <div *ngIf="angForm.controls['hotellocation'].invalid && (angForm.controls['hotellocation'].dirty || angForm.controls['hotellocation'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['hotellocation'].errors.required">
+          Hotel Location is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="addRegistration(hotelcode.value, hotelname.value, hotellocation.value)"
+        [disabled]="angForm.pristine || angForm.invalid"
+        class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
